@@ -1,3 +1,3 @@
-class Note < Sinatra::Base
+class Note < ActiveRecord::Base
   belongs_to :user
 end
