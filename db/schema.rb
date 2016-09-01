@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830145109) do
+ActiveRecord::Schema.define(version: 20160831182837) do
+
+  create_table "note_topics", force: :cascade do |t|
+    t.integer "note_id"
+    t.integer "topic_id"
+  end
 
   create_table "notes", force: :cascade do |t|
-    t.string  "topic"
     t.string  "content"
     t.integer "user_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

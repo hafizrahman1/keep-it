@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-  	set :sessions_secret, "notes_secret"
+  	set :session_secret, "notes_secret"
   end
 
  # home page
@@ -18,11 +18,11 @@ class ApplicationController < Sinatra::Base
   helpers do
 
  	def current_user
- 		@current_user ||= User.find_by(id: session[:user_id])
+ 	  @_current_user ||= User.find_by(id: session[:user_id])
  	end
 
  	def logged_in?
- 		!!session[:user_id]
+ 	  !!session[:user_id]
  	end
 
   end

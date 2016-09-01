@@ -1,0 +1,20 @@
+<h2> Edit Note </h2>
+
+<form method="post" action="/notes/<%=@note.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <input type="text" name="note[content]" value="<%= @note.content %>"><br><br>
+  <% Topic.all.each do |topic| %>
+    <label><%= topic.name %></label>
+    <input type="checkbox" name="note[topic_ids][]" value="<%= topic.id %>" id="<%= topic.name %>" <%='checked' if @note.topics.include?(topic) %>>
+  <% end %>
+ <label>Add new topic:</label>
+ <input type="text" id="new_topic" name="topic[name]"><br></br>
+  <input class="btn btn-success btn-lg" type="submit" value="Update">
+</form>
+
+<form method="post" action="/notes/<%=@note.id%>/delete">
+  <input type="hidden" name="_method" value="DELETE">
+  <input class="btn btn-danger btn-lg" type="submit" value="Delete">	
+</form>
+

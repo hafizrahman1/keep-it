@@ -1,0 +1,14 @@
+<h2>Add a Note</h2>
+<form action="/notes" method="POST">
+
+  Topic: <input list="topics" name="topic">
+  <datalist id="topics">
+    <option value="Ruby">
+    <option value="CSS">
+    <option value="Rails">
+    <option value="C">
+    <option value="Java">
+  </datalist>
+  <p>Content: <input type="text" name="content" required></p>
+  <input class="btn btn-primary" type="submit" value="submit">
+</form>

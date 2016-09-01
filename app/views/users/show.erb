@@ -1,0 +1,31 @@
+<h1><%= current_user.username %>'s Profile</h1>
+<p><a href="/logout">Logout</a></p>
+
+<!--Display created notes-->
+<% if !current_user.notes.empty? %>
+<p>List of notes:</p>
+<%current_user.notes.reverse.each do |note| %>
+	
+  <label>Content</label>
+  <a href="/notes"><%= note.content %></a>
+
+  <!--Topics-->
+  <%note.topics.each do |topic|%>
+
+  <p>Topic: <%= topic.name %></p>
+  <%end%>
+  <p><a class="btn btn-primary" href="/notes/<%=note.id%>/edit">Edit</a><p>
+<% end %>
+<% end %>
+
+<!--Add notes-->
+<p><a class="btn btn-success" href="/notes/new">Add Note</a></p>
+<!-- <form id="task-form" action="/notes" method="post">
+  <input type="text" name="topic" placeholder="topic" required><br>
+  <input id="taskInput" type="text" name="content" placeholder="note content" required><br><br>
+  <input class="btn btn-primary" type="submit">
+</form> -->
+
+<!--Update notes -->
+
+<!--Delete notes -->
