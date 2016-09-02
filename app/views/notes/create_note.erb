@@ -1,4 +1,4 @@
-<h2>Add a Note</h2>
+<h2>Add a Note</h2><br>
 <form action="/notes" method="POST">
 
   Topic: <input list="topics" name="topic">
@@ -7,8 +7,16 @@
     <option value="CSS">
     <option value="Rails">
     <option value="C">
-    <option value="Java">
-  </datalist>
-  <p>Content: <input type="text" name="content" required></p>
-  <input class="btn btn-primary" type="submit" value="submit">
+    <option value="C-Sharp">
+    <option value="C++">
+<!--     <option value="Java">
+    <option value="Java-Script">
+    <option value="Scala">
+    <option value="Fortran">
+    <option value="Lisp">
+    <option value="Cobol"> -->
+  </datalist><br><br>
+
+  <textarea name="content" required></textarea><br><br>
+  <input class="btn btn-primary" type="submit" value="Add">
 </form>

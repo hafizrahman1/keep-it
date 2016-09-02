@@ -23,8 +23,11 @@ class NotesController < ApplicationController
 	    redirect to '/notes/new'
 	  else
 	  	@note = Note.create(content: params[:content], user_id: current_user.id)
-	  	@topic= Topic.create(name: params[:topic])
-	  	@note.topics << @topic
+	  	#@topic= Topic.create(name: params[:topic])
+	    #@note.topics.build(name: params[:topic])
+	    if !params[:topic].empty?
+	  	  @note.topics << Topic.find_or_create_by(name: params[:topic])
+	  	end
 
 	  	redirect to "/users/#{current_user.id}"
 	  end
@@ -37,6 +40,15 @@ class NotesController < ApplicationController
 	  	else
 	  	  redirect to '/login'
 	  	end
+	end
+	get	'/notes/:id/delete' do
+	  @note = Note.find_by_id(params[:id])
+	  if logged_in?
+	    @note.delete
+	    redirect to "/users/#{current_user.id}"
+	  else
+	    redirect to '/login'
+	  end
 	end
 
 	patch '/notes/:id' do

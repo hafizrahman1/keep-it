@@ -17,11 +17,17 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body class="container">
 
-   <nav class="navbar navbar-default">
-     <div class="container">
+    <style>
+      #logouts, #users {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+
+   <nav class="navbar navbar-inverse">
+     <div class="container container-fluid">
        <!-- Brand and toggle get grouped for better mobile display -->
        <div class="navbar-header">
          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,9 +36,37 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
+
          <a class="navbar-brand" href="/">Keep-It</a>
-       </div>
+
+         </div>
+
+    <!-- Collect the nav links for user profile and login logout -->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+          <li><a href="/">Home</a></li>
+          <% if logged_in? %>
+            <li><a href="/users/<%= current_user.id %>">User Profile</a></li>
+            <li><a id="logout" href="/logout">Logout</a></li>
+          
+          <% else %>
+<!--             <li><a href="/notes">Notes</a></li>
+            <li><a href="/notes">Topics</a></li> -->
+<!--             <li role="separator" class="divider"></li> -->
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+
+          <% end %>
+          </ul>
+        </li>
+      </ul>
+
    </nav>
+
+
 
   <!--Main content-->
   <main>
@@ -41,7 +75,7 @@
     	<%=yield%>
 
 	   <footer align="center">
-	   	<p>&copy; Keep-It Inc. 2016</p>
+	   	<p>&copy;2016 Keep-It Inc.</p>
 	   </footer>
     </div>
    </main>

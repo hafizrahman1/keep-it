@@ -1,25 +1,44 @@
-<h1><%= current_user.username %>'s Profile</h1>
-<p><a href="/logout">Logout</a></p>
+<div class="row">
+  <div class="col-xs-12">
+    <h1><%= current_user.username %>'s Profile</h1>
+  </div>
+</div>
 
 <!--Display created notes-->
 <% if !current_user.notes.empty? %>
-<p>List of notes:</p>
+<h3>List of notes:</h3>
+<div class="row">
 <%current_user.notes.reverse.each do |note| %>
-	
-  <label>Content</label>
-  <a href="/notes"><%= note.content %></a>
+  <div class="col-sm-6 well" style="margin: 5px;">
+    <h6><a href="/notes">Content:</a><%= note.content %></h6>
 
-  <!--Topics-->
-  <%note.topics.each do |topic|%>
 
-  <p>Topic: <%= topic.name %></p>
-  <%end%>
-  <p><a class="btn btn-primary" href="/notes/<%=note.id%>/edit">Edit</a><p>
+    <!--Topics-->
+    <label><a href="/notes">Topic:</a></label>
+    <%note.topics.each do |topic|%>
+     <a href=""> <strong class="label label-info">#<%= topic.name %></strong></a>
+    <%end%>
+
+    <p><a class="btn btn-default btn-xs" style="margin-right: 10px" href="/notes/<%=note.id%>/edit"><i class="glyphicon glyphicon-edit"></i></a>
+    <a class="btn btn-default btn-xs" href="/notes/<%=note.id%>/delete"><i class="glyphicon glyphicon-trash"></i></a><p><br>
+  </div>
 <% end %>
+</div>
 <% end %>
 
 <!--Add notes-->
-<p><a class="btn btn-success" href="/notes/new">Add Note</a></p>
+<div class="container">
+<div class="row">
+<p><a class="btn btn-primary" href="/notes/new">Add Note</a></p>
+</div>
+</div>
+
+<!-- <span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span> -->
 <!-- <form id="task-form" action="/notes" method="post">
   <input type="text" name="topic" placeholder="topic" required><br>
   <input id="taskInput" type="text" name="content" placeholder="note content" required><br><br>
