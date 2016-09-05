@@ -11,6 +11,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css">
 
+    <!--Custome style-->
+    <link rel="stylesheet" type="text/css" href="">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,32 +42,30 @@
 
          <a class="navbar-brand" href="/">Keep-It</a>
 
-         </div>
+         </div> <!--container-->
 
-    <!-- Collect the nav links for user profile and login logout -->
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <!-- Collect the nav links for user profile and login logout -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+            <ul class="dropdown-menu">
 
-          <li><a href="/">Home</a></li>
-          <% if logged_in? %>
-            <li><a href="/users/<%= current_user.id %>">User Profile</a></li>
-            <li><a id="logout" href="/logout">Logout</a></li>
-          
-          <% else %>
-<!--             <li><a href="/notes">Notes</a></li>
-            <li><a href="/notes">Topics</a></li> -->
-<!--             <li role="separator" class="divider"></li> -->
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/">Home</a></li>
+            <% if logged_in? %>
+              <li><a href="/users/<%= current_user.id %>">User Profile</a></li>
+              <li><a id="logout" href="/logout">Logout</a></li>
+            
+            <% else %>
 
-          <% end %>
-          </ul>
-        </li>
-      </ul>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign Up</a></li>
 
-   </nav>
+            <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div><!--navigation header-->
+   </nav><!--navigation-->
 
 
 
@@ -72,13 +73,20 @@
   <main>
   	<div class="container">
 <!--     	<h1>Welcome to Keep-It!</h1> -->
+
     	<%=yield%>
 
-	   <footer align="center">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>&copy;2016 Keep-It Inc. All rights reserved.</p>
+        </div>
+      </div>
+
+<!-- 	   <footer align="center">
 	   	<p>&copy;2016 Keep-It Inc.</p>
-	   </footer>
-    </div>
-   </main>
+	   </footer> -->
+    </div> <!--container-->
+   </main><!--main-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -8,29 +8,28 @@
 <% if !current_user.notes.empty? %>
 <h3>List of notes:</h3>
 <div class="row">
-<%current_user.notes.reverse.each do |note| %>
-  <div class="col-sm-6 well" style="margin: 5px;">
-    <h6><a href="/notes">Content:</a><%= note.content %></h6>
+  <%current_user.notes.reverse.each do |note| %>
+    <div class="col-xs-4 well" style="margin: 5px; border: 1px;width: 32%;">
+      <h5><%= note.content %></h5>
 
 
-    <!--Topics-->
-    <label><a href="/notes">Topic:</a></label>
-    <%note.topics.each do |topic|%>
-     <a href=""> <strong class="label label-info">#<%= topic.name %></strong></a>
-    <%end%>
+      <!--Topics-->
+      <%note.topics.each do |topic|%>
+       <a href="/topics/<%= topic.id %>"> <strong class="label label-info">#<%= topic.name %></strong></a>
+      <%end%>
 
-    <p><a class="btn btn-default btn-xs" style="margin-right: 10px" href="/notes/<%=note.id%>/edit"><i class="glyphicon glyphicon-edit"></i></a>
-    <a class="btn btn-default btn-xs" href="/notes/<%=note.id%>/delete"><i class="glyphicon glyphicon-trash"></i></a><p><br>
-  </div>
-<% end %>
+      <p><a class="btn btn-default btn-xs" style="margin-right: 10px" href="/notes/<%=note.id%>/edit"><i class="glyphicon glyphicon-edit"></i></a>
+      <a class="btn btn-default btn-xs" href="/notes/<%=note.id%>/delete"><i class="glyphicon glyphicon-trash"></i></a></p>
+    </div>
+  <% end %>
 </div>
 <% end %>
 
 <!--Add notes-->
-<div class="container">
 <div class="row">
-<p><a class="btn btn-primary" href="/notes/new">Add Note</a></p>
-</div>
+  <div class="col-xs-12">
+  <p><a class="btn btn-primary" href="/notes/new">Add Note</a></p>
+  </div>
 </div>
 
 <!-- <span class="label label-default">Default</span>

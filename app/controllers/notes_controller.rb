@@ -17,6 +17,11 @@ class NotesController < ApplicationController
 	 end
 	end
 
+	get '/notes/:id' do
+	  @note= Note.find_or_create_by(params[:id])
+      erb :'notes/show_note'
+	end
+
 	post '/notes' do
 
 	  if params[:topic] == "" || params[:content] == ""
@@ -41,6 +46,7 @@ class NotesController < ApplicationController
 	  	  redirect to '/login'
 	  	end
 	end
+
 	get	'/notes/:id/delete' do
 	  @note = Note.find_by_id(params[:id])
 	  if logged_in?

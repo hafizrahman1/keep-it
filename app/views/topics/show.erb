@@ -1,0 +1,7 @@
+<h4><strong class="label label-info"><%= @topic.name %></strong></h4>
+
+<% @topic.notes.each do |note| %>
+  <li>
+	<a href="/notes/<%=note.id%>"><strong><%= note.content %></strong></a>
+  </li>
+<% end %>
